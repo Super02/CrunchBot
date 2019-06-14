@@ -1,5 +1,5 @@
 # Crunchbot - by Super02 & dnorhoj - Copyright 2019
-import inspect, secret, os
+import inspect, os
 import discord
 from discord.ext import commands
 
