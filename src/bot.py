@@ -1,9 +1,10 @@
 # Crunchbot - by Super02 & dnorhoj - Copyright 2019
-import discord, inspect, secret
+import inspect, secret, os
+import discord
 from discord.ext import commands
 
 #Declare the bot, and the prefix
-startup_extensions = ()
+startup_extensions = []
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('+'))
 
@@ -32,4 +33,4 @@ if __name__ == "__main__":
 	print("Loaded: {}".format(" and".join(", ".join(lst).rsplit(',', 1))))
 
 #This starts the bot with token
-bot.run(secret.token)
+bot.run(os.environ['TOKEN'])
