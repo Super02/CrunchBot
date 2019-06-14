@@ -21,21 +21,15 @@ async def test(ctx):
 
 #Load cogs
 if __name__ == "__main__":
-	lst = ""
-	i = 0
+	lst = []
 	for extension in startup_extensions:
 		try:
 			bot.load_extension(extension)
-			if(i==0):
-				lst = lst + "{}".format(extension)
-			else:
-				lst = lst + ", {}".format(extension)
-			i+=1
+			lst.append(extension.split('.')[-1])
 		except Exception as e:
 			exc = "{}: {}".format(type(e).__name__, str(e))
 			print("Failed to load {}\n{}".format(extension, exc))
-	lst = (lst[::-1].replace(","[::-1]," and"[::-1], 1))[::-1].replace("cogs.","")
-	print("Loaded: {}".format(lst))
+	print("Loaded: {}".format(" and".join(", ".join(lst).rsplit(',', 1))))
 
 #This starts the bot with token
 bot.run(secret.token)
