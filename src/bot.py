@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or('+'))
 async def on_ready():
 	print("Bot started")
 	print("Logged in as: {0}\nID: {0.id}".format(bot.user))
-	
+
 	await bot.change_presence(activity=discord.Game(name="+help"))
 
 @bot.command()
