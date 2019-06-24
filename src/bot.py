@@ -13,7 +13,7 @@ bot = commands.Bot(command_prefix=commands.when_mentioned_or('+'))
 async def on_ready():
 	print("Bot started")
 	print("Logged in as: {0}\nID: {0.id}".format(bot.user))
-	
+
 	await bot.change_presence(activity=discord.Game(name="+help"))
 
 @bot.command()
@@ -33,6 +33,11 @@ if __name__ == "__main__":
 				print("Failed to load {}\n{}".format(extension, exc))
 		print("Loaded: {}".format(" and".join(", ".join(lst).rsplit(',', 1))))
 
+<<<<<<< HEAD
 	#This starts the bot with token
 	print("Starting bot")
 	bot.run(os.environ['TOKEN'])
+=======
+#This starts the bot with token
+bot.run(os.environ['TOKEN'])
+>>>>>>> 11f768089c80a2bd8f05a7023024c9fa7c1ab0bf
