@@ -1,4 +1,4 @@
-# Crunchbot - by Super02 & dnorhoj - Copyright 2019
+# Crunchbot - by Super02 & dnorhoj - © Copyright 2019
 import inspect, os
 import discord
 from discord.ext import commands
@@ -22,15 +22,17 @@ async def test(ctx):
 
 #Load cogs
 if __name__ == "__main__":
-	lst = []
-	for extension in startup_extensions:
-		try:
-			bot.load_extension(extension)
-			lst.append(extension.split('.')[-1])
-		except Exception as e:
-			exc = "{}: {}".format(type(e).__name__, str(e))
-			print("Failed to load {}\n{}".format(extension, exc))
-	print("Loaded: {}".format(" and".join(", ".join(lst).rsplit(',', 1))))
+	if len(startup_extensions) > 0:
+		lst = []
+		for extension in startup_extensions:
+			try:
+				bot.load_extension(extension)
+				lst.append(extension.split('.')[-1])
+			except Exception as e:
+				exc = "{}: {}".format(type(e).__name__, str(e))
+				print("Failed to load {}\n{}".format(extension, exc))
+		print("Loaded: {}".format(" and".join(", ".join(lst).rsplit(',', 1))))
 
-#This starts the bot with token
-bot.run(os.environ['TOKEN'])
+	#This starts the bot with token
+	print("Starting bot")
+	bot.run(os.environ['TOKEN'])
