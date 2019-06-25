@@ -43,6 +43,6 @@ There's no guarantee that all of these features will be implemented.
 - [ ] Contact Owners (dnorhoj & Super02)
 - [ ] Random section (Random numbers, coinflip, names, etc.)
 - [ ] Getting a logo
-- [ ] MCDonald's "sommerchancen" exploit, exploiter.
+- [ ] MCDonald's "sommerchancen" exploiter.
 
 - [ ] More to come...
