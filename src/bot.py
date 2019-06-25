@@ -1,5 +1,4 @@
 # Crunchbot - by Super02 & dnorhoj - © Copyright 2019
-# Test
 import inspect, os
 import discord
 from discord.ext import commands
