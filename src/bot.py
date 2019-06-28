@@ -8,7 +8,7 @@ startup_extensions = [
 	"modules.owner"
 ]
 
-bot = commands.Bot(command_prefix=commands.when_mentioned_or('+'))
+bot = commands.Bot(command_prefix=commands.when_mentioned_or('§'))
 
 #This will run when the bot starts
 @bot.event
@@ -16,7 +16,7 @@ async def on_ready():
 	print("Bot started")
 	print("Logged in as: {0}\nID: {0.id}".format(bot.user))
 
-	await bot.change_presence(activity=discord.Game(name="+help"))
+	await bot.change_presence(activity=discord.Game(name="§help"))
 
 @bot.command()
 async def test(ctx):
