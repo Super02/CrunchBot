@@ -4,7 +4,9 @@ import discord
 from discord.ext import commands
 
 #Declare the bot, and the prefix
-startup_extensions = []
+startup_extensions = [
+	"modules.owner"
+]
 
 bot = commands.Bot(command_prefix=commands.when_mentioned_or('+'))
 
