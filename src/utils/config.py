@@ -48,4 +48,4 @@ if __name__ == "__main__":
 	import os
 	x = Config(os.environ['FIREBASE'])
 
-	x._set("config/config/", 1, "nigga")
+	x._set("config/config/", 1, "test")
