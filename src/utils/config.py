@@ -1,13 +1,14 @@
 import json
 import firebase_admin
 import discord
+import os
 from firebase_admin import credentials, firestore
 
 class PathNotFound(BaseException): pass
 
 class Config:
 
-	def __init__(self, arg_creds):
+	def __init__(self, arg_creds = os.environ['FIREBASE']):
 		if isinstance(arg_creds, str):
 			creds = credentials.Certificate(json.loads(arg_creds))
 		elif isinstance(arg_creds, dict):
@@ -19,33 +20,42 @@ class Config:
 		self.db = firestore.client(app=app)
 
 	# Getters
-	def _get(self, path: str, key: str = None):
-		document = self.db.document(str(path)).get()
-		if document.exists:
-			document = document.to_dict()
+	def getRaw(self, path: str, key: str = None):
+		doc_ref = self.db.document(str(path)).get()
+		if doc_ref.exists:
+			doc_ref = doc_ref.to_dict()
 			if key is None:
-				return document
+				return doc_ref
 			else:
-				return document[str(key)]
+				return doc_ref[str(key)]
 		else:
 			raise PathNotFound(f"The path '{path}' doesn't exist")
 
-	# Setters
-	def _set(self, path: str, key: str, value: str):
-		return self.db.document(str(path)).update({str(key): value})
-	
-	def getServerConfig(self, id):
+	def getServerConfig(self, id, key: str = None):
 		if isinstance(id, discord.Guild):
 			id = str(id.id)
-		elif isinstance(id, int):
+		else:
 			id = str(id)
-		elif not isinstance(id, str):
-			raise ValueError(f"The id '{id}' is not valid")
-		
+
+		default_server_config = self.db.document("config/default_server_config").get()
+		server_config = self.db.document(f"server_configs/{id}").get()
+		if not server_config.exists:
+			server_config = default_server_config
+
+		server_config = {**default_server_config.to_dict(), **server_config.to_dict()}
+
+		if key is None:
+			return server_config
+
+		return server_config[key]
+
+	# Setters
+	def setRaw(self, path: str, key: str, value: str):
+		return self.db.document(str(path)).update({str(key): value})
 
 
 if __name__ == "__main__":
 	import os
 	x = Config(os.environ['FIREBASE'])
 
-	x._set("config/config/", 1, "test")
+	x.setRaw("config/config/", 1, "test")

@@ -5,7 +5,7 @@ import os
 class Owner(commands.Cog):
 	def __init__(self, bot):
 		self.bot = bot
-		self.config = config.Config(os.environ['FIREBASE'])
+		self.config = config.Config()
 
 	async def cog_check(self, ctx: commands.Context):
 		return ctx.author.id in self.config._get("config/config", "owners")
