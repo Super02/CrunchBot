@@ -43,5 +43,6 @@ There's no guarantee that all of these features will be implemented.
 - [ ] Contact Owners (dnorhoj & Super02)
 - [ ] Random section (Random numbers, coinflip, names, etc.)
 - [ ] Getting a logo
+- [ ] F3 question spammer.
 
 - [ ] More to come...
