@@ -44,5 +44,6 @@ There's no guarantee that all of these features will be implemented.
 - [ ] Random section (Random numbers, coinflip, names, etc.)
 - [ ] Getting a logo
 - [ ] F3 question spammer.
+- [ ] Flight tracker (with notifications for tracking a flight)
 
 - [ ] More to come...
